@@ -1,0 +1,5 @@
+En Python puedes utilizar variables.
+En Python puedes utilizar condicionales.
+En Python puedes utilizar bucles.
+En Python puedes utilizar funciones.
+En Python puedes utilizar módulos.
