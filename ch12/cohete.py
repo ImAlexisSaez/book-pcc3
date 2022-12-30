@@ -9,7 +9,7 @@ class Cohete:
         self.pantalla_rect = juego_ia.pantalla.get_rect()
 
         # Carga la imagen de la nave y coge su rectángulo
-        self.imagen = pygame.image.load('ch12/images/ship.bmp')
+        self.imagen = pygame.image.load('ch12/imagenes/ship.bmp')
         self.rect = self.imagen.get_rect()
 
         # Comienza cada nueva imagen en el centro de la parte 
