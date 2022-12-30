@@ -3,6 +3,7 @@ import sys
 import pygame
 
 from ajustes import Ajustes
+from cohete import Cohete
 
 class InvasionAlien:
     """Clase que gestiona los activos del juego y su comportamiento."""
@@ -17,6 +18,8 @@ class InvasionAlien:
             (self.ajustes.pantalla_ancho, self.ajustes.pantalla_largo))
         pygame.display.set_caption("¡Invasión de alienígenas!")
 
+        self.cohete = Cohete(self)
+
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
         while True:
@@ -27,6 +30,7 @@ class InvasionAlien:
             
             # Redibuja la pantalla en cada iteración del bucle
             self.pantalla.fill(self.ajustes.color_fondo)
+            self.cohete.dibuja_nave()
 
             # Hace visible la última pantalla dibujada
             pygame.display.flip()
