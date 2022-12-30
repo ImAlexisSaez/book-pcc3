@@ -2,6 +2,8 @@ import sys
 
 import pygame
 
+from ajustes import Ajustes
+
 class InvasionAlien:
     """Clase que gestiona los activos del juego y su comportamiento."""
 
@@ -9,12 +11,11 @@ class InvasionAlien:
         """Inicializa el juego y crea sus recursos."""
         pygame.init()
         self.reloj = pygame.time.Clock()
+        self.ajustes = Ajustes()
 
-        self.pantalla = pygame.display.set_mode((1200, 800))
+        self.pantalla = pygame.display.set_mode(
+            (self.ajustes.pantalla_ancho, self.ajustes.pantalla_largo))
         pygame.display.set_caption("¡Invasión de alienígenas!")
-
-        # Declara el color del fondo de pantalla
-        self.color_fondo = (230, 230, 230)
 
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
@@ -25,7 +26,7 @@ class InvasionAlien:
                     sys.exit()
             
             # Redibuja la pantalla en cada iteración del bucle
-            self.pantalla.fill(self.color_fondo)
+            self.pantalla.fill(self.ajustes.color_fondo)
 
             # Hace visible la última pantalla dibujada
             pygame.display.flip()
