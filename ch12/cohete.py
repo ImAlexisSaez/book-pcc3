@@ -15,6 +15,15 @@ class Cohete:
         # Comienza cada nueva imagen en el centro de la parte 
         # inferior de la pantalla
         self.rect.midbottom = self.pantalla_rect.midbottom
+
+        # Flag de movimiento; la nave comienza sin moverse.
+        self.moviendo_derecha = False
+    
+    def actualiza_posicion(self):
+        """Actualiza la posición de la nave en función de las
+           flags de movimiento"""
+        if self.moviendo_derecha:
+            self.rect.x += 1
     
     def dibuja_nave(self):
         """Dibuja la nave en su posición actual."""
