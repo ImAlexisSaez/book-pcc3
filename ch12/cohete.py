@@ -18,12 +18,15 @@ class Cohete:
 
         # Flag de movimiento; la nave comienza sin moverse.
         self.moviendo_derecha = False
+        self.moviendo_izquierda = False
     
     def actualiza_posicion(self):
         """Actualiza la posición de la nave en función de las
            flags de movimiento"""
         if self.moviendo_derecha:
             self.rect.x += 1
+        if self.moviendo_izquierda:
+            self.rect.x -= 1
     
     def dibuja_nave(self):
         """Dibuja la nave en su posición actual."""

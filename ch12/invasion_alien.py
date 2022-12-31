@@ -36,9 +36,13 @@ class InvasionAlien:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.cohete.moviendo_derecha = True
+                elif event.key == pygame.K_LEFT:
+                    self.cohete.moviendo_izquierda = True
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.cohete.moviendo_derecha = False
+                elif event.key == pygame.K_LEFT:
+                    self.cohete.moviendo_izquierda = False
 
     
     def _actualiza_pantalla(self):
