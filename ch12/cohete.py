@@ -28,9 +28,9 @@ class Cohete:
         """Actualiza la posición de la nave en función de las
            flags de movimiento"""
         # Actualiza el valor de x de la nave, no del rectángulo
-        if self.moviendo_derecha:
+        if self.moviendo_derecha and self.rect.right < self.pantalla_rect.right:
             self.x += self.ajustes.velocidad_nave
-        if self.moviendo_izquierda:
+        if self.moviendo_izquierda and self.rect.left > 0:
             self.x -= self.ajustes.velocidad_nave
         
         # Actualiza el objeto rect con el valor de self.x
