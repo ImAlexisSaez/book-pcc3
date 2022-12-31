@@ -44,6 +44,8 @@ class InvasionAlien:
             self.cohete.moviendo_derecha = True
         elif event.key == pygame.K_LEFT:
             self.cohete.moviendo_izquierda = True
+        elif event.key == pygame.K_q:
+            sys.exit()
 
     def _controla_eventos_KEYUP(self, event):
         """Responde a dejar de pulsar una tecla."""
