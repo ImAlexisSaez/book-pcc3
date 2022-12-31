@@ -15,7 +15,9 @@ class InvasionAlien:
         self.ajustes = Ajustes()
 
         self.pantalla = pygame.display.set_mode(
-            (self.ajustes.pantalla_ancho, self.ajustes.pantalla_largo))
+            (0, 0), pygame.FULLSCREEN)
+        self.ajustes.pantalla_ancho = self.pantalla.get_rect().width
+        self.ajustes.pantalla_largo = self.pantalla.get_rect().height
         pygame.display.set_caption("¡Invasión de alienígenas!")
 
         self.cohete = Cohete(self)
