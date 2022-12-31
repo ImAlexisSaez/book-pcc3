@@ -6,6 +6,7 @@ class Cohete:
     def __init__(self, juego_ia):
         """Inicializa la nave y establece su posición inicial."""
         self.pantalla = juego_ia.pantalla
+        self.ajustes = juego_ia.ajustes
         self.pantalla_rect = juego_ia.pantalla.get_rect()
 
         # Carga la imagen de la nave y coge su rectángulo
@@ -16,6 +17,9 @@ class Cohete:
         # inferior de la pantalla
         self.rect.midbottom = self.pantalla_rect.midbottom
 
+        # Almacena un float para la posición exacta de la nave
+        self.x = float(self.rect.x)
+
         # Flag de movimiento; la nave comienza sin moverse.
         self.moviendo_derecha = False
         self.moviendo_izquierda = False
@@ -23,10 +27,14 @@ class Cohete:
     def actualiza_posicion(self):
         """Actualiza la posición de la nave en función de las
            flags de movimiento"""
+        # Actualiza el valor de x de la nave, no del rectángulo
         if self.moviendo_derecha:
-            self.rect.x += 1
+            self.x += self.ajustes.velocidad_nave
         if self.moviendo_izquierda:
-            self.rect.x -= 1
+            self.x -= self.ajustes.velocidad_nave
+        
+        # Actualiza el objeto rect con el valor de self.x
+        self.rect.x = self.x
     
     def dibuja_nave(self):
         """Dibuja la nave en su posición actual."""
