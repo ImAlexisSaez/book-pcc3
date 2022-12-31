@@ -34,16 +34,23 @@ class InvasionAlien:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    self.cohete.moviendo_derecha = True
-                elif event.key == pygame.K_LEFT:
-                    self.cohete.moviendo_izquierda = True
+                self._controla_eventos_KEYDOWN(event)
             elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    self.cohete.moviendo_derecha = False
-                elif event.key == pygame.K_LEFT:
-                    self.cohete.moviendo_izquierda = False
+                self._controla_eventos_KEYUP(event)                
+        
+    def _controla_eventos_KEYDOWN(self, event):
+        """Responde a pulsar una tecla."""
+        if event.key == pygame.K_RIGHT:
+            self.cohete.moviendo_derecha = True
+        elif event.key == pygame.K_LEFT:
+            self.cohete.moviendo_izquierda = True
 
+    def _controla_eventos_KEYUP(self, event):
+        """Responde a dejar de pulsar una tecla."""
+        if event.key == pygame.K_RIGHT:
+            self.cohete.moviendo_derecha = False
+        elif event.key == pygame.K_LEFT:
+            self.cohete.moviendo_izquierda = False
     
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
