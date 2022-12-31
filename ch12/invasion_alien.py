@@ -32,6 +32,11 @@ class InvasionAlien:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    # Mueve la nave hacia la derecha.
+                    self.cohete.rect.x += 1
+
     
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
