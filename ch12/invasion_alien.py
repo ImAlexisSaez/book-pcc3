@@ -23,7 +23,8 @@ class InvasionAlien:
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
         while True:
-            self._controla_eventos()            
+            self._controla_eventos()  
+            self.cohete.actualiza_posicion()          
             self._actualiza_pantalla()
             self.reloj.tick(60)
     
@@ -34,8 +35,10 @@ class InvasionAlien:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    # Mueve la nave hacia la derecha.
-                    self.cohete.rect.x += 1
+                    self.cohete.moviendo_derecha = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.cohete.moviendo_derecha = False
 
     
     def _actualiza_pantalla(self):
