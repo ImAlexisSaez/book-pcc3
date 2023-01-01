@@ -20,7 +20,7 @@ class Bala(Sprite):
         # Almacena la posición como float
         self.y = float(self.rect.y)
     
-    def actualiza(self):
+    def update(self):
         """Mueve la bala hacia arriba en la pantalla."""
         # Actualiza la posición exacta de la bala
         self.y -= self.ajustes.velocidad_bala
