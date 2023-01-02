@@ -83,21 +83,27 @@ class InvasionAlien:
     
     def _crea_flota(self):
         """Crea la flota de alienígenas."""
-        # Crea un alienígena y continua añadiendo hasta que no quede hueco.
-        # El espacio entre alienígenas es el de la anchura de uno de ellos.
+        # Crea un alien y continua añadiendo hasta que no quede hueco.
+        # Espacio entre aliens: la anchura y la altura de uno de ellos.
         alien = Alien(self)
-        alien_anchura = alien.rect.width
+        alien_anchura, alien_altura = alien.rect.size
         
-        x_actual = alien_anchura
-        while x_actual < (self.ajustes.pantalla_ancho - 2 * alien_anchura):
-            self._crea_alien(x_actual)
-            x_actual += 2 * alien_anchura
+        x_actual, y_actual = alien_anchura, alien_altura
+        while y_actual < (self.ajustes.pantalla_largo - 9 * alien_altura):
+            while x_actual < (self.ajustes.pantalla_ancho - 2 * alien_anchura):
+                self._crea_alien(x_actual, y_actual)
+                x_actual += 2 * alien_anchura
+            
+            # Finalizada una fila, resetea x e incrementa y
+            x_actual = alien_anchura
+            y_actual += 2 * alien_altura
     
-    def _crea_alien(self, posicion_x):
-        """Crea un alien y lo coloca en la fila."""
+    def _crea_alien(self, posicion_x, posicion_y):
+        """Crea un alien y lo coloca en la flota."""
         nuevo_alien = Alien(self)
         nuevo_alien.x = posicion_x
         nuevo_alien.rect.x = posicion_x
+        nuevo_alien.rect.y = posicion_y
         self.aliens.add(nuevo_alien)
             
     def _actualiza_pantalla(self):
