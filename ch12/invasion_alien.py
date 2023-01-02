@@ -29,13 +29,7 @@ class InvasionAlien:
         while True:
             self._controla_eventos()  
             self.cohete.actualiza_posicion() 
-            self.balas.update()
-
-            # Elimina las balas que desaparecen de la pantalla.
-            for bala in self.balas.copy():
-                if bala.rect.bottom <= 0:
-                    self.balas.remove(bala)            
-
+            self._actualiza_balas()
             self._actualiza_pantalla()
             self.reloj.tick(60)
     
@@ -72,6 +66,16 @@ class InvasionAlien:
         if len(self.balas) < self.ajustes.balas_permitidas:
             nueva_bala = Bala(self)
             self.balas.add(nueva_bala)
+    
+    def _actualiza_balas(self):
+        """Actualiza posición de balas y elimina las que se salen."""
+        # Actualiza la posición de las balas.
+        self.balas.update()
+
+        # Elimina las balas que desaparecen de la pantalla.
+        for bala in self.balas.copy():
+            if bala.rect.bottom <= 0:
+                self.balas.remove(bala)
     
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
