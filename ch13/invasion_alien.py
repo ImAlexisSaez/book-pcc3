@@ -34,6 +34,7 @@ class InvasionAlien:
             self._controla_eventos()  
             self.cohete.actualiza_posicion() 
             self._actualiza_balas()
+            self._actualiza_aliens()
             self._actualiza_pantalla()
             self.reloj.tick(60)
     
@@ -105,6 +106,10 @@ class InvasionAlien:
         nuevo_alien.rect.x = posicion_x
         nuevo_alien.rect.y = posicion_y
         self.aliens.add(nuevo_alien)
+    
+    def _actualiza_aliens(self):
+        """Actualiza las posiciones de todos los aliens de la flota."""
+        self.aliens.update()
             
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""

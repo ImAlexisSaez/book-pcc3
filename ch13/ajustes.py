@@ -16,3 +16,6 @@ class Ajustes:
         self.altura_bala = 15
         self.color_bala = (60, 60, 60)
         self.balas_permitidas = 3
+
+        # Ajustes de los alienígenas
+        self.velocidad_alien = 1.5
