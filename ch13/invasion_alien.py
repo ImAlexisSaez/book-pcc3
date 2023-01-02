@@ -107,8 +107,23 @@ class InvasionAlien:
         nuevo_alien.rect.y = posicion_y
         self.aliens.add(nuevo_alien)
     
+    def _controla_bordes_flota(self):
+        """Responde adecuadamente si un alien alcanza el borde."""
+        for alien in self.aliens.sprites():
+            if alien.controla_bordes():
+                self._cambia_sentido_flota()
+                break
+
+    def _cambia_sentido_flota(self):
+        """Baja la flota y cambia su sentido."""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.ajustes.velocidad_caida_flota
+        
+        self.ajustes.sentido_flota *= -1
+    
     def _actualiza_aliens(self):
-        """Actualiza las posiciones de todos los aliens de la flota."""
+        """Comprueba si los aliens alcanzan el borde y actualiza posiciones."""
+        self._controla_bordes_flota()
         self.aliens.update()
             
     def _actualiza_pantalla(self):

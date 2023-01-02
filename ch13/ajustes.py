@@ -19,3 +19,6 @@ class Ajustes:
 
         # Ajustes de los alienígenas
         self.velocidad_alien = 1.5
+        self.velocidad_caida_flota = 10
+        # Sentido flota: 1, derecha; -1, izquierda.
+        self.sentido_flota = 1
