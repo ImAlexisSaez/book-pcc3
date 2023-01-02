@@ -90,11 +90,15 @@ class InvasionAlien:
         
         x_actual = alien_anchura
         while x_actual < (self.ajustes.pantalla_ancho - 2 * alien_anchura):
-            nuevo_alien = Alien(self)
-            nuevo_alien.x = x_actual
-            nuevo_alien.rect.x = x_actual
-            self.aliens.add(nuevo_alien)
+            self._crea_alien(x_actual)
             x_actual += 2 * alien_anchura
+    
+    def _crea_alien(self, posicion_x):
+        """Crea un alien y lo coloca en la fila."""
+        nuevo_alien = Alien(self)
+        nuevo_alien.x = posicion_x
+        nuevo_alien.rect.x = posicion_x
+        self.aliens.add(nuevo_alien)
             
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
