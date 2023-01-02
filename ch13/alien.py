@@ -10,8 +10,8 @@ class Alien(Sprite):
         self.pantalla = ia_juego.pantalla
 
         # Carga la imagen del alien y fija su atributo del rectángulo
-        self.imagen = pygame.image.load('ch13/imagenes/alien.bmp')
-        self.rect = self.imagen.get_rect()
+        self.image = pygame.image.load('ch13/imagenes/alien.bmp')
+        self.rect = self.image.get_rect()
 
         # Inicia cada nuevo alien en la esquina superior izquierda
         # de la pantalla

@@ -5,6 +5,7 @@ import pygame
 from ajustes import Ajustes
 from cohete import Cohete
 from bala import Bala
+from alien import Alien
 
 class InvasionAlien:
     """Clase que gestiona los activos del juego y su comportamiento."""
@@ -23,6 +24,9 @@ class InvasionAlien:
 
         self.cohete = Cohete(self)
         self.balas = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
+
+        self._crea_flota()
 
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
@@ -77,12 +81,28 @@ class InvasionAlien:
             if bala.rect.bottom <= 0:
                 self.balas.remove(bala)
     
+    def _crea_flota(self):
+        """Crea la flota de alienígenas."""
+        # Crea un alienígena y continua añadiendo hasta que no quede hueco.
+        # El espacio entre alienígenas es el de la anchura de uno de ellos.
+        alien = Alien(self)
+        alien_anchura = alien.rect.width
+        
+        x_actual = alien_anchura
+        while x_actual < (self.ajustes.pantalla_ancho - 2 * alien_anchura):
+            nuevo_alien = Alien(self)
+            nuevo_alien.x = x_actual
+            nuevo_alien.rect.x = x_actual
+            self.aliens.add(nuevo_alien)
+            x_actual += 2 * alien_anchura
+            
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
         self.pantalla.fill(self.ajustes.color_fondo)
         for bala in self.balas.sprites():
             bala.dibuja_bala()
         self.cohete.dibuja_nave()
+        self.aliens.draw(self.pantalla)
         
         pygame.display.flip()
 
