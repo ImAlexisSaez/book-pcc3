@@ -30,6 +30,12 @@ class InvasionAlien:
             self._controla_eventos()  
             self.cohete.actualiza_posicion() 
             self.balas.update()
+
+            # Elimina las balas que desaparecen de la pantalla.
+            for bala in self.balas.copy():
+                if bala.rect.bottom <= 0:
+                    self.balas.remove(bala)            
+
             self._actualiza_pantalla()
             self.reloj.tick(60)
     
