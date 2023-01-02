@@ -69,8 +69,9 @@ class InvasionAlien:
     
     def _dispara_bala(self):
         """Crea una nueva bala y la añade al grupo de balas."""
-        nueva_bala = Bala(self)
-        self.balas.add(nueva_bala)
+        if len(self.balas) < self.ajustes.balas_permitidas:
+            nueva_bala = Bala(self)
+            self.balas.add(nueva_bala)
     
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""

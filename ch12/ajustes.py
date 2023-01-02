@@ -15,3 +15,4 @@ class Ajustes:
         self.anchura_bala = 3
         self.altura_bala = 15
         self.color_bala = (60, 60, 60)
+        self.balas_permitidas = 3
