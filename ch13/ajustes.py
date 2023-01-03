@@ -11,11 +11,14 @@ class Ajustes:
         self.velocidad_nave = 1.5
 
         # Ajustes de las balas
-        self.velocidad_bala = 2.0
-        self.anchura_bala = 3
+        # self.velocidad_bala = 2.0
+        self.velocidad_bala = 10.0
+        # self.anchura_bala = 3
+        self.anchura_bala = 3000
         self.altura_bala = 15
         self.color_bala = (60, 60, 60)
-        self.balas_permitidas = 3
+        # self.balas_permitidas = 3
+        self.balas_permitidas = 10
 
         # Ajustes de los alienígenas
         self.velocidad_alien = 1.5
