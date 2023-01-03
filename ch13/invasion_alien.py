@@ -141,6 +141,10 @@ class InvasionAlien:
         """Comprueba si los aliens alcanzan el borde y actualiza posiciones."""
         self._controla_bordes_flota()
         self.aliens.update()
+
+        # Busca colisiones de alien y cohete.
+        if pygame.sprite.spritecollideany(self.cohete, self.aliens):
+            print("¡Cohete alcanzado!")
             
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""

@@ -8,7 +8,7 @@ class Ajustes:
         self.color_fondo = (230, 230, 230)
 
         # Ajustes de la nave
-        self.velocidad_nave = 1.5
+        self.velocidad_nave = 1.5        
 
         # Ajustes de las balas
         # self.velocidad_bala = 2.5
@@ -21,7 +21,8 @@ class Ajustes:
         self.balas_permitidas = 10
 
         # Ajustes de los alienígenas
-        self.velocidad_alien = 1.5
+        # self.velocidad_alien = 1.5
+        self.velocidad_alien = 50
         self.velocidad_caida_flota = 10
         # Sentido flota: 1, derecha; -1, izquierda.
         self.sentido_flota = 1
