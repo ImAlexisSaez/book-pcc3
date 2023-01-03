@@ -87,6 +87,11 @@ class InvasionAlien:
         colisiones = pygame.sprite.groupcollide(
             self.balas, self.aliens, True, True
         )
+
+        if not self.aliens:
+            # Elimina balas y crea nueva flota.
+            self.balas.empty()
+            self._crea_flota()
     
     def _crea_flota(self):
         """Crea la flota de alienígenas."""
