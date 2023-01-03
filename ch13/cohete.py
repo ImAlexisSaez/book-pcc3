@@ -36,6 +36,11 @@ class Cohete:
         # Actualiza el objeto rect con el valor de self.x
         self.rect.x = self.x
     
+    def centra_cohete(self):
+        """Centra el cohete en la pantalla."""
+        self.rect.midbottom = self.pantalla_rect.midbottom
+        self.x = float(self.rect.x)
+    
     def dibuja_nave(self):
         """Dibuja la nave en su posición actual."""
         self.pantalla.blit(self.imagen, self.rect)

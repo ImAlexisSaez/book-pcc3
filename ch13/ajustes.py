@@ -8,7 +8,8 @@ class Ajustes:
         self.color_fondo = (230, 230, 230)
 
         # Ajustes de la nave
-        self.velocidad_nave = 1.5        
+        self.velocidad_nave = 1.5
+        self.limite_naves = 3
 
         # Ajustes de las balas
         # self.velocidad_bala = 2.5

@@ -1,8 +1,10 @@
 import sys
+from time import sleep
 
 import pygame
 
 from ajustes import Ajustes
+from estadisticas_juego import EstadisticasJuego
 from cohete import Cohete
 from bala import Bala
 from alien import Alien
@@ -21,6 +23,9 @@ class InvasionAlien:
         self.ajustes.pantalla_ancho = self.pantalla.get_rect().width
         self.ajustes.pantalla_largo = self.pantalla.get_rect().height
         pygame.display.set_caption("¡Invasión de alienígenas!")
+
+        # Crea una instancia para almacenar estadísticas del juego.
+        self.estadisticas = EstadisticasJuego(self)
 
         self.cohete = Cohete(self)
         self.balas = pygame.sprite.Group()
@@ -144,7 +149,23 @@ class InvasionAlien:
 
         # Busca colisiones de alien y cohete.
         if pygame.sprite.spritecollideany(self.cohete, self.aliens):
-            print("¡Cohete alcanzado!")
+            self._alcanza_cohete()
+    
+    def _alcanza_cohete(self):
+        """Gestiona el impacto del cohete por una nave enemiga."""
+        # Reduce el número de naves disponibles.
+        self.estadisticas.naves_disponibles -= 1
+
+        # Limpia pantalla de enemigos y balas
+        self.balas.empty()
+        self.aliens.empty()
+
+        # Crea nueva flota y centra el cohete
+        self._crea_flota()
+        self.cohete.centra_cohete()
+
+        # Pausa medio segundo el juego
+        sleep(0.5)
             
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
