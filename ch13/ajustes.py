@@ -11,7 +11,7 @@ class Ajustes:
         self.velocidad_nave = 1.5
 
         # Ajustes de las balas
-        # self.velocidad_bala = 2.0
+        # self.velocidad_bala = 2.5
         self.velocidad_bala = 10.0
         # self.anchura_bala = 3
         self.anchura_bala = 3000

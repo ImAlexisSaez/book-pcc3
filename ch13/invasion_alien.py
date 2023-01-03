@@ -82,6 +82,11 @@ class InvasionAlien:
             if bala.rect.bottom <= 0:
                 self.balas.remove(bala)
         
+        # Gestiona colisiones entre balas y aliens.
+        self._controla_colisiones_balas_aliens()
+
+    def _controla_colisiones_balas_aliens(self):
+        """Responde a las colisiones entre balas y aliens."""
         # Comprueba si alguna bala impacta en algún alien.
         #   En caso afirmativo, elimina bala y alien.
         colisiones = pygame.sprite.groupcollide(
