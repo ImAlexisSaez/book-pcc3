@@ -33,8 +33,8 @@ class InvasionAlien:
 
         self._crea_flota()
 
-        # Comienza el juego en estado de partida activa
-        self.partida_activa = True
+        # Comienza el juego en estado de partida inactiva
+        self.partida_activa = False
 
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
