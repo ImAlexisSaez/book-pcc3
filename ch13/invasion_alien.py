@@ -33,13 +33,19 @@ class InvasionAlien:
 
         self._crea_flota()
 
+        # Comienza el juego en estado de partida activa
+        self.partida_activa = True
+
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
         while True:
-            self._controla_eventos()  
-            self.cohete.actualiza_posicion() 
-            self._actualiza_balas()
-            self._actualiza_aliens()
+            self._controla_eventos()
+
+            if self.partida_activa:  
+                self.cohete.actualiza_posicion() 
+                self._actualiza_balas()
+                self._actualiza_aliens()
+            
             self._actualiza_pantalla()
             self.reloj.tick(60)
     
@@ -156,19 +162,22 @@ class InvasionAlien:
     
     def _alcanza_cohete(self):
         """Gestiona el impacto del cohete por una nave enemiga."""
-        # Reduce el número de naves disponibles.
-        self.estadisticas.naves_disponibles -= 1
+        if self.estadisticas.naves_disponibles > 0:
+            # Reduce el número de naves disponibles.
+            self.estadisticas.naves_disponibles -= 1
 
-        # Limpia pantalla de enemigos y balas
-        self.balas.empty()
-        self.aliens.empty()
+            # Limpia pantalla de enemigos y balas
+            self.balas.empty()
+            self.aliens.empty()
 
-        # Crea nueva flota y centra el cohete
-        self._crea_flota()
-        self.cohete.centra_cohete()
+            # Crea nueva flota y centra el cohete
+            self._crea_flota()
+            self.cohete.centra_cohete()
 
-        # Pausa medio segundo el juego
-        sleep(0.5)
+            # Pausa medio segundo el juego
+            sleep(0.5)
+        else:
+            self.partida_activa = False
     
     def _controla_aterrizaje_aliens(self):
         """Comprueba si algún alien alcanza el borde inferior de la pantalla."""
