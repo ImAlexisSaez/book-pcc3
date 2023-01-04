@@ -150,6 +150,9 @@ class InvasionAlien:
         # Busca colisiones de alien y cohete.
         if pygame.sprite.spritecollideany(self.cohete, self.aliens):
             self._alcanza_cohete()
+        
+        # Controla si aterriza algún alien.
+        self._controla_aterrizaje_aliens()
     
     def _alcanza_cohete(self):
         """Gestiona el impacto del cohete por una nave enemiga."""
@@ -166,6 +169,13 @@ class InvasionAlien:
 
         # Pausa medio segundo el juego
         sleep(0.5)
+    
+    def _controla_aterrizaje_aliens(self):
+        """Comprueba si algún alien alcanza el borde inferior de la pantalla."""
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= self.ajustes.pantalla_largo:
+                self._alcanza_cohete()
+                break
             
     def _actualiza_pantalla(self):
         """Actualiza las imágenes en la pantalla y las dibuja (flip)."""
