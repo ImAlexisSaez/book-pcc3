@@ -12,7 +12,7 @@ class Boton:
         self.ancho, self.alto = 200, 50
         self.color_boton = (0, 135, 9)
         self.color_texto = (255, 255, 255)
-        self.fuente = pygame.font.SysFont(None, 48)
+        self.font = pygame.font.SysFont(None, 48)
 
         # Construye el rectángulo del botón y lo centra.
         self.rect = pygame.Rect(0, 0, self.ancho, self.alto)
