@@ -5,6 +5,7 @@ import pygame
 
 from ajustes import Ajustes
 from estadisticas_juego import EstadisticasJuego
+from boton import Boton
 from cohete import Cohete
 from bala import Bala
 from alien import Alien
@@ -35,6 +36,9 @@ class InvasionAlien:
 
         # Comienza el juego en estado de partida inactiva
         self.partida_activa = False
+
+        # Crea botón de jugar
+        self.boton_jugar = Boton(self, "Jugar")
 
     def ejecuta_juego(self):
         """Inicia el bucle principal para el juego."""
@@ -193,6 +197,10 @@ class InvasionAlien:
             bala.dibuja_bala()
         self.cohete.dibuja_nave()
         self.aliens.draw(self.pantalla)
+
+        # Dibuja el botón de jugar si el juego está inactivo.
+        if not self.partida_activa:
+            self.boton_jugar.dibuja_boton()
         
         pygame.display.flip()
 
