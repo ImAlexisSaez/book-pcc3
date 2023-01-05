@@ -68,8 +68,22 @@ class InvasionAlien:
 
     def _controla_boton_jugar(self, posicion_raton):
         """Comienza una nueva partida cuando el jugador hace clic."""
-        if self.boton_jugar.rect.collidepoint(posicion_raton):
+        boton_pulsado = self.boton_jugar.rect.collidepoint(posicion_raton)
+        if boton_pulsado and not self.partida_activa:
+            # Resetea estadística del juego
+            self.estadisticas.resetea_estadisticas()
             self.partida_activa = True
+
+            # Suprime elementos del juego.
+            self.balas.empty()
+            self.aliens.empty()
+
+            # Crea una nueva flota y centra la nave.
+            self._crea_flota()
+            self.cohete.centra_cohete()
+
+            # Esconde el puntero del ratón
+            pygame.mouse.set_visible(False)
         
     def _controla_eventos_KEYDOWN(self, event):
         """Responde a pulsar una tecla."""
@@ -190,6 +204,7 @@ class InvasionAlien:
             sleep(0.5)
         else:
             self.partida_activa = False
+            pygame.mouse.set_visible(True)
     
     def _controla_aterrizaje_aliens(self):
         """Comprueba si algún alien alcanza el borde inferior de la pantalla."""
