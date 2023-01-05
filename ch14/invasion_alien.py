@@ -61,7 +61,15 @@ class InvasionAlien:
             elif event.type == pygame.KEYDOWN:
                 self._controla_eventos_KEYDOWN(event)
             elif event.type == pygame.KEYUP:
-                self._controla_eventos_KEYUP(event)                
+                self._controla_eventos_KEYUP(event)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                posicion_raton = pygame.mouse.get_pos()
+                self._controla_boton_jugar(posicion_raton)
+
+    def _controla_boton_jugar(self, posicion_raton):
+        """Comienza una nueva partida cuando el jugador hace clic."""
+        if self.boton_jugar.rect.collidepoint(posicion_raton):
+            self.partida_activa = True
         
     def _controla_eventos_KEYDOWN(self, event):
         """Responde a pulsar una tecla."""
